@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController  {
 
     var randomDiceIndex1 : Int = 0
     var randomDiceIndex2 : Int = 0
@@ -88,13 +88,72 @@ class ViewController: UIViewController {
     @IBAction func goButtonPressed(_ sender: UIButton) {
         changeDiceImages()
     }
-   
+    
+    
+
+    
+    // Add the actions
+    
+
+
+ 
+    func resetDice() {
+        
+        diceImageView1.setImage(#imageLiteral(resourceName: "dice1"), for: UIControlState.normal)
+        diceImageView1.setImage(#imageLiteral(resourceName: "dice1"), for: UIControlState.selected)
+        diceImageView1.setImage(#imageLiteral(resourceName: "dice1"), for: UIControlState.highlighted)
+        diceImageView2.setImage(#imageLiteral(resourceName: "dice1"), for: UIControlState.normal)
+        diceImageView3.setImage(#imageLiteral(resourceName: "dice1"), for: UIControlState.normal)
+        diceImageView4.setImage(#imageLiteral(resourceName: "dice1"), for: UIControlState.normal)
+        diceImageView5.setImage(#imageLiteral(resourceName: "dice1"), for: UIControlState.normal)
+        diceImageView6.setImage(#imageLiteral(resourceName: "dice1"), for: UIControlState.normal)
+        diceImageView7.setImage(#imageLiteral(resourceName: "dice1"), for: UIControlState.normal)
+        diceImageView8.setImage(#imageLiteral(resourceName: "dice1"), for: UIControlState.normal)
+        diceImageView9.setImage(#imageLiteral(resourceName: "dice1"), for: UIControlState.normal)
+        diceImageView10.setImage(#imageLiteral(resourceName: "dice1"), for: UIControlState.normal)
+        diceImageView11.setImage(#imageLiteral(resourceName: "dice1"), for: UIControlState.normal)
+        diceImageView12.setImage(#imageLiteral(resourceName: "dice1"), for: UIControlState.normal)
+        diceImageView13.setImage(#imageLiteral(resourceName: "dice1"), for: UIControlState.normal)
+        diceImageView14.setImage(#imageLiteral(resourceName: "dice1"), for: UIControlState.normal)
+        
+         dice1StatusPressed = false
+         dice2StatusPressed = false
+         dice3StatusPressed = false
+         dice4StatusPressed = false
+         dice5StatusPressed = false
+         dice6StatusPressed = false
+         dice7StatusPressed = false
+         dice8StatusPressed = false
+         dice9StatusPressed = false
+         dice10StatusPressed = false
+         dice11StatusPressed = false
+         dice12StatusPressed = false
+         dice13StatusPressed = false
+         dice14StatusPressed = false
+    }
+    
+    
     // this will compare current results to desired results to see when and if you win called every time dice change
     
     func didIWin(){
         if currentMission == "mission6" {
             if diceImageView1.currentImage == #imageLiteral(resourceName: "dice6") && diceImageView2.currentImage == #imageLiteral(resourceName: "dice6") && diceImageView3.currentImage == #imageLiteral(resourceName: "dice6") && diceImageView4.currentImage == #imageLiteral(resourceName: "dice6") && diceImageView5.currentImage == #imageLiteral(resourceName: "dice6") && diceImageView6.currentImage == #imageLiteral(resourceName: "dice6") && diceImageView7.currentImage == #imageLiteral(resourceName: "dice6") && diceImageView8.currentImage == #imageLiteral(resourceName: "dice6") && diceImageView9.currentImage == #imageLiteral(resourceName: "dice6") && diceImageView10.currentImage == #imageLiteral(resourceName: "dice6") && diceImageView11.currentImage == #imageLiteral(resourceName: "dice6") && diceImageView12.currentImage == #imageLiteral(resourceName: "dice6") && diceImageView13.currentImage == #imageLiteral(resourceName: "dice6") && diceImageView14.currentImage == #imageLiteral(resourceName: "dice6")   {
-                print("Yay, it works!")
+                let alert = UIAlertController(title: "You Win!!", message: "Click 'OK.' to Play Again.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+                    UIAlertAction in
+                            self.resetDice()
+                            self.noHighlights()
+                    
+                }
+               
+                
+                // Add the actions
+                
+                alert.addAction(okAction)
+
+                self.present(alert, animated: true, completion: nil)
+                
+                
             }
             
         }
@@ -123,6 +182,7 @@ class ViewController: UIViewController {
     
     //this is the actual changing of the dice when rolling
     
+    
     func changeDiceImages(){
         
         randomDiceIndex1 = Int(arc4random_uniform(6))
@@ -146,34 +206,42 @@ class ViewController: UIViewController {
         
         
         if dice1StatusPressed == false {
-            diceImageView1.setImage(UIImage(named: diceArray[randomDiceIndex1]), for: UIControlState.normal)
+           diceImageView1.setImage(UIImage(named: diceArray[randomDiceIndex1]), for: UIControlState.normal)
             diceImageView1.setImage(UIImage(named: diceArray[randomDiceIndex1]), for: UIControlState.highlighted)
-            diceImageView1.setImage(UIImage(named: diceArray[randomDiceIndex1]), for: UIControlState.selected)}
+            diceImageView1.setImage(UIImage(named: diceArray[randomDiceIndex1]), for: UIControlState.selected)
+            
+        }
        
         if dice2StatusPressed == false {
             diceImageView2.setImage(UIImage(named: diceArray[randomDiceIndex2]), for: UIControlState.normal)
-            diceImageView2.setImage(UIImage(named: diceArray[randomDiceIndex2]), for: UIControlState.highlighted)
-            diceImageView2.setImage(UIImage(named: diceArray[randomDiceIndex2]), for: UIControlState.selected)}
-        
+//            diceImageView2.setImage(UIImage(named: diceArray[randomDiceIndex2]), for: UIControlState.highlighted)
+//            diceImageView2.setImage(UIImage(named: diceArray[randomDiceIndex2]), for: UIControlState.selected)
+            
+        }
+
         if dice3StatusPressed == false {
-            diceImageView3.setImage(UIImage(named: diceArray[randomDiceIndex3]), for: UIControlState.highlighted)
+//            diceImageView3.setImage(UIImage(named: diceArray[randomDiceIndex3]), for: UIControlState.highlighted)
             diceImageView3.setImage(UIImage(named: diceArray[randomDiceIndex3]), for: UIControlState.normal)
-            diceImageView3.setImage(UIImage(named: diceArray[randomDiceIndex3]), for: UIControlState.selected)}
+//            diceImageView3.setImage(UIImage(named: diceArray[randomDiceIndex3]), for: UIControlState.selected)
+            
+        }
         
         if dice4StatusPressed == false {
-            diceImageView4.setImage(UIImage(named: diceArray[randomDiceIndex4]), for: UIControlState.selected)
-            diceImageView4.setImage(UIImage(named: diceArray[randomDiceIndex4]), for: UIControlState.highlighted)
+//            diceImageView4.setImage(UIImage(named: diceArray[randomDiceIndex4]), for: UIControlState.selected)
+//            diceImageView4.setImage(UIImage(named: diceArray[randomDiceIndex4]), for: UIControlState.highlighted)
             diceImageView4.setImage(UIImage(named: diceArray[randomDiceIndex4]), for: UIControlState.normal)}
         
         if dice5StatusPressed == false {
-            diceImageView5.setImage(UIImage(named: diceArray[randomDiceIndex5]), for: UIControlState.highlighted)
-            diceImageView5.setImage(UIImage(named: diceArray[randomDiceIndex5]), for: UIControlState.selected)
+//            diceImageView5.setImage(UIImage(named: diceArray[randomDiceIndex5]), for: UIControlState.highlighted)
+//            diceImageView5.setImage(UIImage(named: diceArray[randomDiceIndex5]), for: UIControlState.selected)
             diceImageView5.setImage(UIImage(named: diceArray[randomDiceIndex5]), for: UIControlState.normal)}
         
         if dice6StatusPressed == false {
             diceImageView6.setImage(UIImage(named: diceArray[randomDiceIndex6]), for: UIControlState.normal)
-            diceImageView6.setImage(UIImage(named: diceArray[randomDiceIndex6]), for: UIControlState.selected)
-            diceImageView6.setImage(UIImage(named: diceArray[randomDiceIndex6]), for: UIControlState.highlighted)}
+//            diceImageView6.setImage(UIImage(named: diceArray[randomDiceIndex6]), for: UIControlState.selected)
+//            diceImageView6.setImage(UIImage(named: diceArray[randomDiceIndex6]), for: UIControlState.highlighted)
+            
+        }
         
         if dice7StatusPressed == false {
             diceImageView7.setImage(UIImage(named: diceArray[randomDiceIndex7]), for: UIControlState.highlighted)
@@ -375,6 +443,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         noHighlights()
+        resetDice()
        
     }
 
